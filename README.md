@@ -188,6 +188,8 @@ of the wave was travelling (black line), and the associated spread
 (light grey
 ribbon).](README_files/figure-markdown_strict/small_region_analysis-1.png)
 
+Finally, close the connection to the NetCDF file.
+
     # Close the connection to the NetCDF file
     ncdf4::nc_close(wave_nc)
 

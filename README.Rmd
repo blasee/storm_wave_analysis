@@ -145,6 +145,8 @@ wave_dp_syd_df %>%
         axis.title.x = element_blank())
 ```
 
+Finally, close the connection to the NetCDF file.
+
 ```{r}
 # Close the connection to the NetCDF file
 ncdf4::nc_close(wave_nc)

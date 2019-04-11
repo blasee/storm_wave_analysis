@@ -49,6 +49,7 @@ saveHTML({
   title = "Entire region wave energy flux",
   verbose = FALSE,
   interval = .2,
-  autobrowse = FALSE)
+  autobrowse = FALSE,
+  img.name = "energy_flux")
 
 setwd("../")

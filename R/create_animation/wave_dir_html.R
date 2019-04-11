@@ -63,6 +63,7 @@ saveHTML({
   title = "NSW wave directions",
   verbose = FALSE,
   interval = .2,
-  autobrowse = FALSE)
+  autobrowse = FALSE,
+  img.name = "wave_direction")
 
 setwd("../")

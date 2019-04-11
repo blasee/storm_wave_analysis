@@ -17,6 +17,37 @@ coastal erosion (See [Louis et.
 al.](https://www.mhl.nsw.gov.au/data/realtime/wave/docs//2016NSWCoastalConferenceLouisCourieletal_Final.pdf)
 for more information).
 
-[1] Holland, G. J., Lynch, A. H., & Leslie, L. M. (1987). *Australian
+This analysis investigates the role that storm waves may have played in
+the damaging event by extracting data from the CAWCR Wave Hindcast [2]
+on the CSIRO THREDDS server.
+
+Obtaining the data
+==================
+
+The wave data required for this analysis was the ww3.aus\_4m.201606.nc
+file and can be accessed from THREDDS [in this
+collection](http://data-cbr.csiro.au/thredds/catalog/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/catalog.html).
+To minimise the file size, the ww3.aus\_4m.201606 NetCDF4 file was
+subset server-side to only include the following variables:
+
+-   Wave energy flux.
+-   Peak wave direction.
+-   Significant wave height.
+-   Wave directional spread.
+
+The dates and times of the data only included the interval from
+2016-06-03T00:00:00Z to 2016-06-09T23:00:00Z, which covers the period of
+time of interest.
+
+The data were downloaded programmatically using **R** (v3.5.3), which
+can be reproduced using the
+[R/wave\_data\_download.R](R/wave_data_download.R) file.
+
+[1] [Holland, G. J., Lynch, A. H., & Leslie, L. M. (1987). *Australian
 east-coast cyclones. Part I: Synoptic overview and case study. Monthly
-Weather Review, 115*(12), 3024-3036.
+Weather Review, 115*(12),
+3024-3036.](https://journals.ametsoc.org/doi/10.1175/1520-0493%281987%29115%3C3024%3AAECCPI%3E2.0.CO%3B2)
+
+[2] Durrant, Thomas; Hemer, Mark; Trenham, Claire; Greenslade, Diana
+(2013): CAWCR Wave Hindcast 1979-2010. v7. CSIRO. Data Collection.
+<a href="https://doi.org/10.4225/08/523168703DCC5" class="uri">https://doi.org/10.4225/08/523168703DCC5</a>

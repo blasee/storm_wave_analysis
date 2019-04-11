@@ -92,7 +92,7 @@ wave_dp_syd_df = wave_dp %>%
 
 # Extract the timeseries of directional spread just off the coast of Sydney.
 wave_spr_syd_df = wave_spr %>% 
-  extract(matrix(c(153, -33.8), ncol = 2)) %>% 
+  raster::extract(matrix(c(153, -33.8), ncol = 2)) %>% 
   t() %>% 
   as_tibble() %>% 
   rename(wave_spr = V1) %>% 

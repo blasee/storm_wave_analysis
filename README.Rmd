@@ -6,30 +6,40 @@ output: md_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-
-library(ggplot2)
-library(ncdf4)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 # Background
 
 On the 4th of June, 2016, an East Coast Low [^1] impacted New South Wales, causing wave overtopping and severe erosion in several areas. This event was a very intense, low pressure system that brought over 100mm of rainfall in one hour at places along the east coast NSW. Widespread rainfall totals exceeded 250mm along most of the NSW coast, leading to 21 catchments experiencing flooding and nearly all of the east-flowing rivers being affected. Periods of sustained gale force winds (over 63km/h) were recorded along the coast, and the Sydney Harbour experienced wind gusts of 116km/h. This intense event also coincided with tides near the Highest Astronomical Tide, combined with pressure-induced sea-level anomalies, and large north-easterly waves, which resulted in local inundation of low-lying areas and widespread coastal erosion (See [Louis et. al.](https://www.mhl.nsw.gov.au/data/realtime/wave/docs//2016NSWCoastalConferenceLouisCourieletal_Final.pdf) for more information).
 
-This analysis investigates the role that storm waves may have played in the damaging event by extracting data from the CAWCR Wave Hindcast [^2] on the CSIRO THREDDS server.
+This analysis investigates the role that storm waves may have played in this damaging event by extracting data from the CAWCR Wave Hindcast [^2] on the CSIRO THREDDS server. 
+
+In the interests of transparency and reproducibility, all of the **R** code is included within this document, and is re-run every time this file is recompiled.
+
+```{r}
+# Install and load the required packages
+if (!require(ggplot2)) 
+  install.packages("ggplot2")
+library(ggplot2)
+
+if (!require(ncdf4))
+  install.packages("ncdf4")
+library(ncdf4)
+```
 
 # Obtaining the data
 
-The wave data required for this analysis was the ww3.aus_4m.201606.nc file and can be accessed from THREDDS [in this collection](http://data-cbr.csiro.au/thredds/catalog/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/catalog.html). To minimise the file size, the ww3.aus_4m.201606 NetCDF4 file was subset server-side to only include the following variables:
+The wave data used for this analysis was obtained from the ww3.aus_4m.201606.nc file and can be accessed from THREDDS [in this collection](http://data-cbr.csiro.au/thredds/catalog/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/catalog.html). To minimise the file size, the ww3.aus_4m.201606 NetCDF4 file was subset server-side to only include the following variables:
 
 - Wave energy flux.
 - Peak wave direction.
 - Significant wave height.
 - Wave directional spread.
 
-The dates and times of the data only included the interval from 0000 hours on the 3rd of June, 2016 to 2300 hours on the 9th of June, 2016, which covers the period of time of interest.
+The dates and times were also subset to minimise the size of the download. The temporal interval for this analysis ranges from 0000 hours on the 3rd of June, 2016 to 2300 hours on the 9th of June, 2016, which covers the period directly before and after the time of interest.
 
-The data were downloaded programmatically using **R** (v3.5.3) from the [THREDDS data server NetCDF Subset Service](http://data-cbr.csiro.au/thredds/ncss/grid/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/ww3.pac_4m.201901.nc/dataset.html), and then read into **R** for data processing and creating spatiotemporal objects for analysis. Both of these steps can be reproduced using the [R/wave_data_download.R](R/wave_data_download.R) and [R/wave_data_import.R](R/post_process.R) files, respectively.
+The data can be downloaded programmatically using **R** (v3.5.3) from the [THREDDS data server NetCDF Subset Service](http://data-cbr.csiro.au/thredds/ncss/grid/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/ww3.pac_4m.201901.nc/dataset.html), and then read into **R** for data processing and creating spatiotemporal objects for analysis. Both of these steps can be reproduced using the [R/wave_data_download.R](R/wave_data_download.R) and [R/wave_data_import.R](R/post_process.R) files, respectively:
 
 ```{r}
 # Read the NetCDF file into R
@@ -87,16 +97,16 @@ max_cge_df %>%
 ```
 
 ```{r}
-if (!file.exists("Animation/nsw_wave_directions.html"))
-  source("R/create_animation/wave_dir_html.R")
+if (!file.exists("Animation/entire_region_energy.html"))
+  source("R/create_animation/wave_energy_html.R")
 ```
 
-![Entire region wave energy flux](Animation/entire_region_energy.gif)
-
+```{r, echo = FALSE, fig.align='center', fig.cap="Figure 3: An animation showing the spatiotemporal evolution of wave power throughout the entire east coast region of Australia, during the East Coast Low event."}
+knitr::include_graphics("Animation/entire_region_energy.gif")
+```
 
 This GIF was created using the [R/create_animation/wave_energy_gif.R](R/create_animation/wave_energy_gif.R) file.
-Note you can also use the html version to create an HTML file that is 
-interactive.
+Note you can also use the html version to create an interactive HTML file.
 
 ## Smaller region covering most of the NSW coastline
 
@@ -110,25 +120,23 @@ if (!file.exists("Animation/nsw_wave_directions.html"))
   source("R/create_animation/wave_dir_html.R")
 ```
 
-![NSW Wave directions](Animation/nsw_wave_directions.gif)
+```{r, echo = FALSE, fig.align='center', fig.cap="Figure 4: An animation showing the spatiotemporal evolution of the wave power and direction throughout the entire east coast region of Australia, during the East Coast Low event."}
+knitr::include_graphics("Animation/nsw_wave_directions.gif")
+```
 
 This GIF was created using the [R/create_animation/wave_dir_gif.R](R/create_animation/wave_dir_gif.R) file.
-Note you can also use the html version to create an HTML file that is 
-interactive.
-
-<!-- ```{r} -->
-<!-- htmltools::includeHTML("Animation/nsw_wave_directions.html") -->
-<!-- ``` -->
+Note you can also use the html version to create an interactive HTML file.
 
 ## Point location off the coast of Sydney
 
-```{r small_region_analysis, fig.height=5, fig.cap="Figure 3: Time series plot showing the direction from which the peak of the wave was travelling (black line), and the associated spread (light grey ribbon)."}
+```{r small_region_analysis, fig.height=5, fig.cap="Figure 5: Time series plot showing the direction from which the peak of the wave was travelling (black line), and the associated spread (light grey ribbon)."}
 wave_dp_syd_df %>% 
   left_join(wave_spr_syd_df, by = "date") %>% 
   ggplot(aes(date, wave_dp)) +
   geom_line() +
   geom_ribbon(aes(ymin = wave_dp - wave_spr / 2, ymax = wave_dp + wave_spr / 2),
               alpha = .4) +
+  labs(y = "Peak wave direction (degrees from)") +
   scale_y_continuous(breaks = seq(0, 315, by = 45),
                      labels = c("N", "NE", "E", "SE", "S", "SW", "W", "NW")) +
   scale_x_datetime(date_breaks = "day", date_labels = "%d %B") +

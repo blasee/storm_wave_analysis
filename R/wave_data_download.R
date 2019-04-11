@@ -6,11 +6,9 @@
 # These packages will be installed automatically if they are not already 
 # installed.
 
-if (!require(httr)) {
+if (!require(httr))
   install.packages("httr")
-  library(httr)
-}
-
+library(httr)
 
 # Build the query / URL ---------------------------------------------------
 

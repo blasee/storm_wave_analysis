@@ -63,7 +63,7 @@ shown in Figure 1, and defined below:
 
 ![Figure 1: Map of Australia (lightgrey polygons) showing the 3
 different spatial scales in this
-analysis.](README_files/figure-markdown_strict/unnamed-chunk-2-1.png)
+analysis.](README_files/figure-markdown_strict/aus_map-1.png)
 
 Large region covering most of the east coast of Australia
 ---------------------------------------------------------
@@ -71,7 +71,7 @@ Large region covering most of the east coast of Australia
 ![Figure 2: Time series plot showing the maximum significant wave height
 (top panel), and the maximum wave energy flux (bottom panel), for the
 entire region covering most of the east coast of
-Australia.](README_files/figure-markdown_strict/unnamed-chunk-3-1.png)
+Australia.](README_files/figure-markdown_strict/large_region_analysis-1.png)
 
 Smaller region covering most of the NSW coastline
 -------------------------------------------------
@@ -79,7 +79,7 @@ Smaller region covering most of the NSW coastline
 ![Figure 3: Time series plot showing the direction from which the peak
 of the wave was travelling (black line), and the associated spread
 (light grey
-ribbon).](README_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+ribbon).](README_files/figure-markdown_strict/small_region_analysis-1.png)
 
 [1] [Holland, G. J., Lynch, A. H., & Leslie, L. M. (1987). *Australian
 east-coast cyclones. Part I: Synoptic overview and case study. Monthly

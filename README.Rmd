@@ -47,7 +47,7 @@ The following results are split into 3 different spatial scales, as shown in Fig
 - A smaller region covering most of the NSW coast of Australia (this area is defined by the solid black line in Figure 1).
 - A random location, just off the coast of Sydney (this location is defined by the small black dot).
 
-```{r, cache = TRUE, fig.cap="Figure 1: Map of Australia (lightgrey polygons) showing the 3 different spatial scales in this analysis."}
+```{r aus_map, cache = TRUE, fig.cap="Figure 1: Map of Australia (lightgrey polygons) showing the 3 different spatial scales in this analysis."}
 ggplot(map_data("world", region = "Australia"), aes(long, lat)) +
   geom_polygon(aes(group = group), fill = "lightgrey") +
   theme_void() +
@@ -70,7 +70,7 @@ ggplot(map_data("world", region = "Australia"), aes(long, lat)) +
 
 ## Large region covering most of the east coast of Australia
 
-```{r, fig.height=8, fig.cap="Figure 2: Time series plot showing the maximum significant wave height (top panel), and the maximum wave energy flux (bottom panel), for the entire region covering most of the east coast of Australia."}
+```{r large_region_analysis, fig.height=8, fig.cap="Figure 2: Time series plot showing the maximum significant wave height (top panel), and the maximum wave energy flux (bottom panel), for the entire region covering most of the east coast of Australia."}
 max_cge_df %>% 
   left_join(max_hs_df, by = "date") %>% 
   tidyr::gather("var", "value", -date) %>% 
@@ -88,7 +88,7 @@ max_cge_df %>%
 
 ## Smaller region covering most of the NSW coastline
 
-```{r, fig.height=5, fig.cap="Figure 3: Time series plot showing the direction from which the peak of the wave was travelling (black line), and the associated spread (light grey ribbon)."}
+```{r small_region_analysis, fig.height=5, fig.cap="Figure 3: Time series plot showing the direction from which the peak of the wave was travelling (black line), and the associated spread (light grey ribbon)."}
 wave_dp_syd_df %>% 
   left_join(wave_spr_syd_df, by = "date") %>% 
   ggplot(aes(date, wave_dp)) +

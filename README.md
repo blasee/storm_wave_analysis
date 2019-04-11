@@ -76,6 +76,19 @@ Australia.](README_files/figure-markdown_strict/large_region_analysis-1.png)
 Smaller region covering most of the NSW coastline
 -------------------------------------------------
 
+The larger region analysis contains data from waves hitting the southern
+Australian coast. The direction of these waves may be very different
+than those waves hitting the southeast coast of Australia, therefore the
+directional analyses will focus on the smaller spatial scales.
+
+![NSW Wave directions](Animation/nsw_wave_directions.gif)
+
+<!-- ```{r} -->
+<!-- htmltools::includeHTML("Animation/nsw_wave_directions.html") -->
+<!-- ``` -->
+Point location off the coast of Sydney
+--------------------------------------
+
 ![Figure 3: Time series plot showing the direction from which the peak
 of the wave was travelling (black line), and the associated spread
 (light grey

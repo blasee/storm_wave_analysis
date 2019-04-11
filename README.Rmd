@@ -47,7 +47,7 @@ The following results are split into 3 different spatial scales, as shown in Fig
 - A smaller region covering most of the NSW coast of Australia (this area is defined by the solid black line in Figure 1).
 - A random location, just off the coast of Sydney (this location is defined by the small black dot).
 
-```{r aus_map, cache = TRUE, fig.cap="Figure 1: Map of Australia (lightgrey polygons) showing the 3 different spatial scales in this analysis."}
+```{r aus_map, fig.cap="Figure 1: Map of Australia (lightgrey polygons) showing the 3 different spatial scales in this analysis."}
 ggplot(map_data("world", region = "Australia"), aes(long, lat)) +
   geom_polygon(aes(group = group), fill = "lightgrey") +
   theme_void() +
@@ -87,6 +87,24 @@ max_cge_df %>%
 ```
 
 ## Smaller region covering most of the NSW coastline
+
+The larger region analysis contains data from waves hitting the southern 
+Australian coast. The direction of these waves may be very different than
+those waves hitting the southeast coast of Australia, therefore the directional
+analyses will focus on the smaller spatial scales.
+
+```{r}
+if (!file.exists("Animation/nsw_wave_directions.html"))
+  source("R/create_animation/wave_dir_html.R")
+```
+
+![NSW Wave directions](Animation/nsw_wave_directions.gif)
+
+<!-- ```{r} -->
+<!-- htmltools::includeHTML("Animation/nsw_wave_directions.html") -->
+<!-- ``` -->
+
+## Point location off the coast of Sydney
 
 ```{r small_region_analysis, fig.height=5, fig.cap="Figure 3: Time series plot showing the direction from which the peak of the wave was travelling (black line), and the associated spread (light grey ribbon)."}
 wave_dp_syd_df %>% 

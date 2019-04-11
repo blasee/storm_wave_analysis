@@ -2,10 +2,7 @@
 title: "Storm Wave Analysis of the East Coast Low Event on June 3rd 2016"
 author: "Blake Seers"
 date: '`r format(Sys.Date(), "%d %B, %Y")`'
-output: 
-  html_document:
-    keep_md: true
-      
+output: md_document
 ---
 
 ```{r setup, include=FALSE}

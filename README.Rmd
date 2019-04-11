@@ -26,7 +26,12 @@ The wave data required for this analysis was the ww3.aus_4m.201606.nc file and c
 
 The dates and times of the data only included the interval from 2016-06-03T00:00:00Z to 2016-06-09T23:00:00Z, which covers the period of time of interest.
 
-The data were downloaded programmatically using **R** (v3.5.3), which can be reproduced using the [R/wave_data_download.R](R/wave_data_download.R) file.
+The data were downloaded programmatically using **R** (v3.5.3) from the [THREDDS data server NetCDF Subset Service](http://data-cbr.csiro.au/thredds/ncss/grid/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/ww3.pac_4m.201901.nc/dataset.html), and then read into **R** for data processing. Both of these steps can be reproduced using the [R/wave_data_download.R](R/wave_data_download.R) and [R/wave_data_import.R](R/post_process.R) files, respectively.
+
+```{r}
+# 
+```
+
 
 
 [^1]: [Holland, G. J., Lynch, A. H., & Leslie, L. M. (1987). *Australian east-coast cyclones. Part I: Synoptic overview and case study. Monthly Weather Review, 115*(12), 3024-3036.](https://journals.ametsoc.org/doi/10.1175/1520-0493%281987%29115%3C3024%3AAECCPI%3E2.0.CO%3B2)

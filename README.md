@@ -39,9 +39,12 @@ The dates and times of the data only included the interval from
 2016-06-03T00:00:00Z to 2016-06-09T23:00:00Z, which covers the period of
 time of interest.
 
-The data were downloaded programmatically using **R** (v3.5.3), which
-can be reproduced using the
-[R/wave\_data\_download.R](R/wave_data_download.R) file.
+The data were downloaded programmatically using **R** (v3.5.3) from the
+[THREDDS data server NetCDF Subset
+Service](http://data-cbr.csiro.au/thredds/ncss/grid/catch_all/CMAR_CAWCR-Wave_archive/CAWCR_Wave_Hindcast_aggregate/gridded/ww3.pac_4m.201901.nc/dataset.html),
+and then read into **R** for data processing. Both of these steps can be
+reproduced using the [R/wave\_data\_download.R](R/wave_data_download.R)
+and [R/wave\_data\_import.R](R/post_process.R) files, respectively.
 
 [1] [Holland, G. J., Lynch, A. H., & Leslie, L. M. (1987). *Australian
 east-coast cyclones. Part I: Synoptic overview and case study. Monthly

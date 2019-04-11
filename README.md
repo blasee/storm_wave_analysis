@@ -73,9 +73,8 @@ Large region covering most of the east coast of Australia
 entire region covering most of the east coast of
 Australia.](README_files/figure-markdown_strict/large_region_analysis-1.png)
 
-<center>
 ![Entire region wave energy flux](Animation/entire_region_energy.gif)
-</center>
+
 This GIF was created using the
 [R/create\_animation/wave\_energy\_gif.R](R/create_animation/wave_energy_gif.R)
 file. Note you can also use the html version to create an HTML file that
@@ -89,9 +88,8 @@ Australian coast. The direction of these waves may be very different
 than those waves hitting the southeast coast of Australia, therefore the
 directional analyses will focus on the smaller spatial scales.
 
-<center>
 ![NSW Wave directions](Animation/nsw_wave_directions.gif)
-</center>
+
 This GIF was created using the
 [R/create\_animation/wave\_dir\_gif.R](R/create_animation/wave_dir_gif.R)
 file. Note you can also use the html version to create an HTML file that

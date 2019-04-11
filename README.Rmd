@@ -91,9 +91,8 @@ if (!file.exists("Animation/nsw_wave_directions.html"))
   source("R/create_animation/wave_dir_html.R")
 ```
 
-<center>
 ![Entire region wave energy flux](Animation/entire_region_energy.gif)
-</center>
+
 
 This GIF was created using the [R/create_animation/wave_energy_gif.R](R/create_animation/wave_energy_gif.R) file.
 Note you can also use the html version to create an HTML file that is 
@@ -111,9 +110,7 @@ if (!file.exists("Animation/nsw_wave_directions.html"))
   source("R/create_animation/wave_dir_html.R")
 ```
 
-<center>
 ![NSW Wave directions](Animation/nsw_wave_directions.gif)
-</center>
 
 This GIF was created using the [R/create_animation/wave_dir_gif.R](R/create_animation/wave_dir_gif.R) file.
 Note you can also use the html version to create an HTML file that is 
